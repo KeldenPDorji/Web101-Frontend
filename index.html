@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Manipulation with Buttons</title>
+    <style>
+        .textwhite {
+            color: white;
+        }
+        .textpurple {
+            color: purple;
+        }
+    </style>
+</head>
+<body>
+    <h1>DOM Manipulation with Buttons</h1>
+    
+    <!-- Adding the buttons -->
+    <button id="blueButton">Blue</button>
+    <button id="redButton">Red</button>
+    <button id="whiteButton">White</button>
+    <button id="purpleButton">Purple</button>
+    <button id="surpriseButton">Surprise Me</button>
+    <button id="dontSurpriseButton">Don't Surprise Me</button>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Select the buttons using their IDs
+            const blueButton = document.getElementById('blueButton');
+            const redButton = document.getElementById('redButton');
+            const whiteButton = document.getElementById('whiteButton');
+            const purpleButton = document.getElementById('purpleButton');
+            const surpriseButton = document.getElementById('surpriseButton');
+            const dontSurpriseButton = document.getElementById('dontSurpriseButton');
+
+            // Function to handle the click event for the blue button
+            function handleBlueButtonClick() {
+                console.log('Blue button clicked!');
+                document.body.style.backgroundColor = 'blue';
+            }
+
+            // Function to handle the click event for the red button
+            function handleRedButtonClick() {
+                console.log('Red button clicked!');
+                document.body.style.backgroundColor = 'red';
+            }
+
+            // Function to handle the click event for the white button
+            function handleWhiteButtonClick() {
+                console.log('White button clicked!');
+                const h1 = document.querySelector('h1');
+                h1.classList.remove('textpurple'); // Ensure it's not purple
+                h1.classList.add('textwhite'); // Add white class
+            }
+
+            // Function to handle the click event for the purple button
+            function handlePurpleButtonClick() {
+                console.log('Purple button clicked!');
+                const h1 = document.querySelector('h1');
+                h1.classList.remove('textwhite'); // Ensure it's not white
+                h1.classList.add('textpurple'); // Add purple class
+            }
+
+            // Function to handle the click event for the "Surprise Me" button
+            function handleSurpriseButtonClick() {
+                const p = document.createElement('p');
+                p.textContent = 'You\'re surprised';
+                document.body.appendChild(p);
+            }
+
+            // Function to handle the click event for the "Don't Surprise Me" button
+            function handleDontSurpriseButtonClick() {
+                const p = document.querySelector('p');
+                if (p) {
+                    p.remove();
+                }
+            }
+
+            // Add event listeners to the buttons
+            blueButton.addEventListener('click', handleBlueButtonClick);
+            redButton.addEventListener('click', handleRedButtonClick);
+            whiteButton.addEventListener('click', handleWhiteButtonClick);
+            purpleButton.addEventListener('click', handlePurpleButtonClick);
+            surpriseButton.addEventListener('click', handleSurpriseButtonClick);
+            dontSurpriseButton.addEventListener('click', handleDontSurpriseButtonClick);
+        });
+    </script>
+</body>
+</html>
